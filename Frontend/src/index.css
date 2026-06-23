@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cricket-green: #22c55e;
+  --color-cricket-dark: #14532d;
+  --color-cricket-accent: #facc15;
+  --color-cricket-bg: #f0fdf4;
+}
