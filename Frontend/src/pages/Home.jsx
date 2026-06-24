@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { MapPin, Calendar, Trophy, Phone, Mail, FileUp, User, Home as HomeIcon, ChevronLeft, ChevronRight, Star, Shield, Users, PlayCircle, Camera, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
+import { MapPin, Calendar, Trophy, Phone, Mail, FileUp, User, Home as HomeIcon, ChevronLeft, ChevronRight, Star, Shield, Users, PlayCircle, Camera, CheckCircle2, AlertCircle, Loader2, QrCode, Copy } from 'lucide-react';
 import { db } from '../firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
@@ -421,6 +421,36 @@ export default function Home() {
                       </select>
                       <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none">
                         <svg className="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Payment Info Section */}
+                  <div className="bg-green-50/30 border border-green-100 rounded-2xl p-6 text-center space-y-4">
+                    <h4 className="text-sm font-bold text-slate-700 uppercase tracking-widest">Scan to Pay ₹1,500</h4>
+                    <div className="w-40 h-40 bg-white mx-auto rounded-xl border border-slate-200 shadow-sm flex items-center justify-center p-2 relative group cursor-pointer overflow-hidden">
+                      {/* TODO: Place actual QR image here */}
+                      <QrCode className="w-16 h-16 text-slate-300" />
+                      <div className="absolute inset-0 bg-white/90 backdrop-blur-sm flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                         <span className="text-xs font-bold text-slate-500 mb-1">Replace with</span>
+                         <span className="text-sm font-bold text-cricket-green text-center px-2">Actual QR Code</span>
+                      </div>
+                    </div>
+                    <div>
+                      <p className="text-xs font-medium text-slate-500 mb-2">Or Pay using UPI ID:</p>
+                      <div className="flex items-center justify-center gap-2">
+                        <span className="font-bold text-slate-800 bg-white px-4 py-2 rounded-lg border border-slate-200 shadow-sm">ccl2026@sbi</span>
+                        <button 
+                           type="button"
+                           title="Copy UPI ID"
+                           className="p-2 text-slate-500 hover:text-cricket-green hover:bg-green-50 rounded-lg transition-colors border border-transparent hover:border-green-100"
+                           onClick={() => {
+                             navigator.clipboard.writeText("ccl2026@sbi");
+                             alert("UPI ID copied!");
+                           }}
+                        >
+                          <Copy className="w-5 h-5" />
+                        </button>
                       </div>
                     </div>
                   </div>
